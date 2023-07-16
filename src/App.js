@@ -4,9 +4,11 @@ import Index from "./Pages/Index";
 import TransactionView from "./Pages/TransactionView";
 import TransactionNew from "./Pages/TransactionNew";
 import { useState, useEffect } from "react";
+import Modal from "./Components/Modal";
 
 function App() {
   const [transactions, setTransactions] = useState([]);
+  const [message, setMessage] = useState({head:"", body:""})
 
   useEffect(() => {
     fetch(process.env.REACT_APP_BASE_URL)
@@ -18,13 +20,16 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Index transactions={transactions} />} />
-        <Route path="/transactions/:id" element={<TransactionView />} />
-        <Route path="/transactions/new" element={<TransactionNew />} />
-      </Routes>
+    <div>
+      <Modal message={message}/>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Index transactions={transactions} />} />
+          <Route path="/transactions/:id" element={<TransactionView setMessage={setMessage}/>} />
+          <Route path="/transactions/new" element={<TransactionNew />} />
+        </Routes>
+      </div>
     </div>
   );
 }

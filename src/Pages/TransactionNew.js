@@ -5,6 +5,7 @@ export default function TransactionNew() {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [from, setFrom] = useState("");
+  const [category, setCategory] = useState("");
 
   return (
     <div className="TransactionNew">
@@ -15,7 +16,7 @@ export default function TransactionNew() {
           fetch(process.env.REACT_APP_BASE_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({item_name: name, amount: amount, date: date, from: from}),
+            body: JSON.stringify({item_name: name, amount: amount, date: date, from: from, category: category}),
           })
           .then(response => {
             console.log('POST worked!')
@@ -67,6 +68,17 @@ export default function TransactionNew() {
             required
             onChange={(e) => {
               setFrom(e.target.value);
+            }}
+          />
+        </div>
+        <div className="Category">
+          <label>Category</label>
+          <input
+            type="text"
+            placeholder="category"
+            required
+            onChange={(e) => {
+              setCategory(e.target.value);
             }}
           />
         </div>

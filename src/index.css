@@ -88,12 +88,12 @@ a {
   margin-right: 10%;
 }
 
-.TransactionNew form {
+form {
   display: grid;
   grid-auto-flow: row;
 }
 
-.TransactionNew form div {
+form div {
   display: grid;
   margin-bottom: 15px;
 }
@@ -101,6 +101,32 @@ a {
 .TransactionView {
   text-align: center;
   border: 1px solid black;
+}
+
+.TransactionView button {
+  margin: 10px;
+}
+
+#modal {
+  background-color: rgba(0, 0, 0, 0.575);
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+#modal button {
+  margin: 5px;
+}
+
+#modal .message {
+
+}
+
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 500px){
